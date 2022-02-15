@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<style>
+    
+    .card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    
+    
+
+</style>
+
+
+<div class="alert alert-primary" role="alert" style="text-align:center" >
+  Welcome To Gamer Geek
+</div>
+
+<br />
+<br />
+
+<div class="row">
+
+    <div class="col">
+        
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="nvidia.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Game Collector</h5>
+            <p class="card-text">Here you can list your favourite Games which You have played</p>
+            <a class="btn btn-primary" asp-controller="Game" asp-action="Index">Open</a>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="avtar.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Top Gamers</h5>
+            <p class="card-text">Here You can view the Profiles of the Top Gamers. </p>
+            <a  class="btn btn-primary" asp-controller="Ranking" asp-action="Index">Open </a>
+          </div>
+        </div>
+
+
+    </div>
+
+    <div class="col">
+
+        
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="blog-game.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Blog - Gamer Geek</h5>
+            <p class="card-text">View The top gaming news and articles.</p>
+            <a  class="btn btn-primary">Open</a>
+          </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+

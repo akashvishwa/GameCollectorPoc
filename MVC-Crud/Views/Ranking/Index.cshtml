@@ -1,0 +1,36 @@
+﻿
+
+@{
+    var data=ViewBag.Data;
+}
+
+
+<table class="table">
+
+    <tr class="table-primary">
+        <th>Profile Id</th>
+        <th>Gamer Name</th>
+        <th>Rank Id</th>
+        <th>Rank Name</th>
+        <th>Game Id</th>
+        <th>Game Name</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in data)
+    {
+        <tr>
+            <td>@item.ProfileId</td>
+            <td>@item.GamerName</td>
+            <td>@item.RankId</td>
+            <td>@item.Rank</td>
+            <td>@item.GameId</td>
+            <td>@item.GameName</td>
+            <td>
+                @Html.ActionLink("View Profile","Index","GamerProfile",new{id=@item.ProfileId},new{ @class="btn btn-primary"})
+                
+            </td>
+        </tr>
+    }
+
+</table>

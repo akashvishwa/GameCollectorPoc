@@ -1,0 +1,52 @@
+﻿@*
+<form method="post" id="EditGameForm"  asp-action="EditGames">
+                 Id:<br/>
+                 <input type="number" id="edit-Id" name="Id" /><br />
+                 Name of Game:<br/>
+                 <input type="text"  id="edit-Name" name="NameOfGame"/><br />
+                 No of Levels:<br/>
+                 <input type="number" id="edit-noOfLevels" name="NoOfLevel"/><br />
+                 Publisher:<br/>
+                 <input type="text" id="edit-Publisher" name="Publisher"/><br />
+                 Popularity:<br/>
+                 <input type="number" name="Popularity" id="edit-Popularity"/><br />
+                 
+
+             </form>*@
+
+@*Bootstrap form for Edit*@
+
+<form method="post" id="EditGameForm"  asp-action="EditGames">
+  <div class="form-group">
+    <label for="edit-Id">Id OF Game</label>
+    <input type="number" id="edit-Id" name="Id"  class="form-control"  >
+    
+  </div>
+
+   <div class="form-group">
+    <label for="NameOfGame">Name OF Game</label>
+    <input type="text"  id="edit-Name" name="NameOfGame"  class="form-control"  pattern="[A-Za-z0-9_]">
+    
+  </div>
+   <div class="form-group">
+    <label for="NoOfLevel">No OF Levels</label>
+    <input type="number" id="edit-noOfLevels" name="NoOfLevel" class="form-control" pattern="[0-9]" >
+    
+  </div>
+
+   <div class="form-group">
+    <label for="Publisher">Name OF Publisher</label>
+    <input type="text" id="edit-Publisher" name="Publisher" class="form-control" pattern="[A-Za-z0-9_]" >
+    
+  </div>
+
+   <div class="form-group">
+    <label for="Popularity">Popularity</label>
+    <input type="number" name="Popularity" id="edit-Popularity" class="form-control" pattern="[0-9]" >
+    
+  </div>
+ 
+  
+
+
+</form>

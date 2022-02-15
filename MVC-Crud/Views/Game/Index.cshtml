@@ -1,0 +1,163 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Games>
+
+
+
+@*<style>
+    #overlay-edit{
+    display:none;
+    }
+      
+    #overlay-create{
+    display:none;
+    }
+
+</style>*@
+
+
+@*This is a toast message*@
+
+
+
+
+
+<br/>
+
+
+<h3>Game Collection - Gamer Geek</h3>
+<hr/>
+
+
+@*modal for addding*@
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD GAME FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          @Html.Partial("_AddGameForm")
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+@*Modal For Edit*@
+
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">EDIT GAME FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          @Html.Partial("_EditGameForm")
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="EditSubmit" >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br />
+
+
+
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+
+        <th>Id</th>
+        <th>Game</th>
+        <th>No of Levels</th>
+        <th>Publisher</th>
+        <th>Popularity</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(newItem=>item.Id)</td>
+                <td>@Html.DisplayFor(newItem=>item.NameOfGame)</td>
+                <td>@Html.DisplayFor(newItem=>item.NoOfLevel)</td>
+                <td>@Html.DisplayFor(newItem=>item.Publisher)</td>
+                <td>@Html.DisplayFor(newItem=>item.Popularity)</td>
+                <td>
+                    <a class="btn btn-success editBtn" data-toggle="modal" data-target="#EditModal" >Edit</a>
+                    <form method="post" style="display:inline" asp-action="DeleteData">                        
+                        <input type="number" class="del-Id" name="Id" style="display:none"/>                                                 
+                        <button class="btn btn-danger delBtn" style="display:inline">Delete</button>
+                    </form>
+                    
+                </td>
+
+            </tr>
+            
+        }
+    </tr>
+    <tr>
+         
+    </tr>
+
+</table>
+
+<br />
+
+
+<!-- Button trigger Add modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  ADD GAME
+</button>
+
+
+
+
+
+@*<div id="overlay-edit">
+             <form method="post" id="formedit"  asp-action="EditGames">
+                 Id:<br/>
+                 <input type="number" id="edit-Id" name="Id" /><br />
+                 Name of Game:<br/>
+                 <input type="text"  id="edit-Name" name="NameOfGame"/><br />
+                 No of Levels:<br/>
+                 <input type="number" id="edit-noOfLevels" name="NoOfLevel"/><br />
+                 Publisher:<br/>
+                 <input type="text" id="edit-Publisher" name="Publisher"/><br />
+                 Popularity:<br/>
+                 <input type="number" name="Popularity" id="edit-Popularity"/><br />
+                 <input type="submit"  class="btn btn-primary" value="Confirm Edit" /> 
+
+             </form>
+
+</div>*@

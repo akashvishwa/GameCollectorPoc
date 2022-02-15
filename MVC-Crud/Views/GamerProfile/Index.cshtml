@@ -1,0 +1,107 @@
+﻿@model GamerProfile
+
+
+    @{
+        var tdata = ViewBag.tdata;
+    }
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img src="~/dragonAvtar.png" class="img-fluid" alt="Responsive image"/>
+        <div class="alert alert-primary " style="text-align:center" role="alert">
+          Avatar
+        </div>
+    </div>
+    <div class="col-8">
+     
+        <table class="table table-striped">
+
+            <tr>
+                <th>Profile Id</th>
+                <td>@Model.ProfileId</td>
+            </tr>
+
+            <tr>
+                <th>Gamer Name</th>
+                <td>@Model.GamerName</td>
+            </tr>
+            <tr>
+                <th>Real Name</th>
+                <td>@Model.RealName</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>@Model.Gender</td>
+            </tr>
+            <tr>
+                <th>Gaming Device</th>
+                <td>@Model.GamingDevice</td>
+            </tr>
+
+            <tr>
+                <th>Esport Player</th>
+                <td>@Model.IsEsportPlayer</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <th>Gaming Platform Id</th>
+                <td>@Model.GamingPlatformId</td>
+            </tr>
+
+
+
+        </table>
+
+    </div>
+    
+  </div>
+</div>
+
+    
+
+
+<hr />
+<div>
+
+    <table class="table table-hover">
+
+        <tr class="table-primary">
+            <th>GameId</th>
+            <th>Game Name</th>
+            <th>Rank Id</th>
+            <th>Rank Of Player</th>
+            <th>No Of Levels in Game</th>
+            <th>Publisher of Game</th>
+            <th>Popularity of Game </th>
+
+        </tr>
+
+        <tr>
+        @foreach (var item in tdata)
+        {
+            <td>@item.GameId</td>
+            <td>@item.NameOfGame</td>
+            <td>@item.RankId</td>
+            <td>@item.Rank</td>
+            <td>@item.NoOfLevels</td>
+            <td>@item.Publisher</td>
+            <td>@item.Popularity</td>
+            
+        }
+
+        </tr>
+
+    </table>
+</div>
+
+
+
+
+
+
