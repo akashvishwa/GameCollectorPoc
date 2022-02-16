@@ -38,10 +38,32 @@ namespace MVC_Crud.Controllers
             ViewBag.tdata = tdata;
 
 
-            return View(data);
+            return View("Index",data);
         }
 
-       
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(GamerProfile obj) {
+
+             _context.tbl_GamerProfile.Update(obj);
+
+            await _context.SaveChangesAsync();
+
+            return Index(obj.ProfileId);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProfile(GamerProfile obj)
+        {
+
+            await _context.tbl_GamerProfile.AddAsync(obj);
+
+            await _context.SaveChangesAsync();
+
+            return Index(obj.ProfileId);
+        }
+
+
+
 
     }
 }

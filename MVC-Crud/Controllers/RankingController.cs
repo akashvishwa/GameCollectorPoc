@@ -16,6 +16,7 @@ namespace MVC_Crud.Controllers
             var data = from r in _context.tbl_Ranking
                        join g in _context.tbl_Games on r.Games.Id equals g.Id
                        join p in _context.tbl_GamerProfile on r.GamerProfile.ProfileId equals p.ProfileId
+                       orderby g.Id
                        select new { 
                        
                            ProfileId = p.ProfileId,
@@ -25,7 +26,7 @@ namespace MVC_Crud.Controllers
                            GameId=g.Id,
                            GameName=g.NameOfGame
                        
-                       };
+                       } ;
 
             ViewBag.Data = data;
 

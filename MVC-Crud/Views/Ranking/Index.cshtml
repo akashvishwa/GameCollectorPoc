@@ -2,35 +2,81 @@
 
 @{
     var data=ViewBag.Data;
+
+    var last=0;
 }
 
+  <table class="table">
 
-<table class="table">
+@foreach (var item in data)
+{
 
-    <tr class="table-primary">
-        <th>Profile Id</th>
-        <th>Gamer Name</th>
-        <th>Rank Id</th>
-        <th>Rank Name</th>
-        <th>Game Id</th>
-        <th>Game Name</th>
-        <th>Action</th>
-    </tr>
 
-    @foreach (var item in data)
-    {
-        <tr>
-            <td>@item.ProfileId</td>
-            <td>@item.GamerName</td>
-            <td>@item.RankId</td>
-            <td>@item.Rank</td>
-            <td>@item.GameId</td>
-            <td>@item.GameName</td>
-            <td>
-                @Html.ActionLink("View Profile","Index","GamerProfile",new{id=@item.ProfileId},new{ @class="btn btn-primary"})
+
+    
+        @if (last != item.GameId)
+        {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-primary">
+                    <th colspan=2>
+                        Game Id : @item.GameId 
+                    </th>
+
+                    <th colspan=3>
+                        Game Name : @item.GameName 
+                    </th>
                 
-            </td>
-        </tr>
-    }
+                </tr>
 
+         
+                <tr class="table-primary">
+                    <th>Profile Id</th>
+                    <th>Gamer Name</th>
+                    <th>Rank Id</th>
+                    <th>Rank Name</th>
+                    <th>Action</th>
+                    
+                </tr>
+
+                <tr >
+
+                    <td>@item.ProfileId</td>
+                    <td>@item.GamerName</td>
+                    <td>@item.RankId</td>
+                    <td>@item.Rank</td>
+                    <td>
+                        @Html.ActionLink("View Profile","Index","GamerProfile",new{id=@item.ProfileId},new{ @class="btn btn-primary"})
+                    </td>
+                    
+                </tr>
+
+        }else{
+                
+               <tr>
+
+                    <td>@item.ProfileId</td>
+                    <td>@item.GamerName</td>
+                    <td>@item.RankId</td>
+                    <td>@item.Rank</td>
+                    <td>
+                        @Html.ActionLink("View Profile","Index","GamerProfile",new{id=@item.ProfileId},new{ @class="btn btn-primary"})
+                    </td>
+                    
+                </tr>
+        
+    
+        }
+
+        
+            last = @item.GameId;
+        
+
+}
 </table>

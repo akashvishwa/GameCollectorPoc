@@ -7,6 +7,88 @@
 
 
 
+
+@*add button Modal*@
+
+<button class="btn btn-success AddProfBtn" data-toggle="modal" data-target="#AddProfModal" >Add Profile</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="AddProfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            
+                            <form id="EditProfile" method="post" asp-action="AddProfile">
+                              <div class="form-group" >
+                                <label for="ProfileId">Profile Id</label>
+                                <input type="number" class="form-control" name="ProfileId" readonly>
+                              </div>
+                              <div class="form-group">
+                                <label for="RealName">Real Name</label>
+                                <input type="text" class="form-control" name="RealName" >
+                              </div>
+                              <div class="form-group">
+                                <label for="GamerName">Gamer Name</label>
+                                <input type="text" class="form-control" name="GamerName" >
+                              </div>
+                              <div class="form-group">
+                                                
+                                    <input type="radio" id="AddMale" name="Gender" value="Male" >
+                                    <label for="AddMale">Male</label><br>
+                                    <input type="radio" id="AddFemale" name="Gender" value="Female">
+                                    <label for="AddFemale">Female</label><br>
+                                    <input type="radio" id="AddOther" name="Gender" value="Other">
+                                    <label for="Other">Other</label>
+                                                
+                                                
+                               </div>
+                              <div class="form-group">
+                                <label for="GamingDevice">Gaming Device</label>
+                                <input type="text" class="form-control" name="GamingDevice" placeholder="Choose From : Pc , Mobile , Console" >
+                              </div>
+                              <div class="form-group">
+                                
+                                
+                                <input name="IsEsportPlayer" type="checkbox" value="true" />
+                                <input name="IsEsportPlayer" type="hidden" value="false" />
+                                <label for="IsEsportPlayer">Is Esport Player</label>
+                                
+                            </div>
+                              <div class="form-group">
+                                <label for="AddEmail">Email</label>
+                                <input type="email" class="form-control" id="AddEmail" name="Email">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="PlatformId">Gaming Platform Id</label>
+                                <input type="text" class="form-control" name="GamingPlatformId">
+                              </div>
+  
+                              <button type="submit" class="btn btn-primary">Add Profile</button>
+                            </form>
+
+
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-4">
@@ -28,14 +110,14 @@
                 <th>Gamer Name</th>
                 <td>@Model.GamerName</td>
             </tr>
-            <tr>
+            @*<tr>
                 <th>Real Name</th>
                 <td>@Model.RealName</td>
-            </tr>
-            <tr>
+            </tr>*@
+            @*<tr>
                 <th>Gender</th>
                 <td>@Model.Gender</td>
-            </tr>
+            </tr>*@
             <tr>
                 <th>Gaming Device</th>
                 <td>@Model.GamingDevice</td>
@@ -45,13 +127,114 @@
                 <th>Esport Player</th>
                 <td>@Model.IsEsportPlayer</td>
             </tr>
-            <tr>
+            @*<tr>
                 <th>Email</th>
                 <td>@Model.Email</td>
-            </tr>
+            </tr>*@
             <tr>
                 <th>Gaming Platform Id</th>
                 <td>@Model.GamingPlatformId</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                <button class="btn btn-warning EditProfBtn" data-toggle="modal" data-target="#editProfModal" >Edit Profile</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="editProfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            
+                            <form id="EditProfile" method="post" asp-action="EditProfile">
+                              <div class="form-group">
+                                <label for="EditProfileId">Profile Id</label>
+                                <input type="number" class="form-control" name="ProfileId" value="@Model.ProfileId">
+                              </div>
+                              <div class="form-group">
+                                <label for="EditRealName">Real Name</label>
+                                <input type="text" class="form-control" name="RealName" value="@Model.RealName">
+                              </div>
+                              <div class="form-group">
+                                <label for="GamerName">Gamer Name</label>
+                                <input type="text" class="form-control" name="GamerName" value="@Model.GamerName">
+                              </div>
+                              <div class="form-group">
+                                                @if (Model.Gender == "Male")
+                                                {
+                                                    <input type="radio" id="EditMale" name="Gender" value="Male" checked>
+                                                    <label for="EditMale">Male</label><br>
+                                                    <input type="radio" id="EditFemale" name="Gender" value="Female">
+                                                    <label for="EditFemale">Female</label><br>
+                                                    <input type="radio" id="EditOther" name="Gender" value="Other">
+                                                    <label for="EditOther">Other</label>
+                                                }
+                                                @if (Model.Gender == "Female")
+                                                {
+                                                    <input type="radio" id="EditMale" name="Gender" value="Male">
+                                                    <label for="EditMale">Male</label><br>
+                                                    <input type="radio" id="EditFemale" name="Gender" value="Female" checked>
+                                                    <label for="EditFemale">Female</label><br>
+                                                    <input type="radio" id="EditOther" name="Gender" value="Other">
+                                                    <label for="EditOther">Other</label>
+                                                }
+
+                                                @if (Model.Gender == "Other")
+                                                {
+                                                    <input type="radio" id="EditMale" name="Gender" value="Male">
+                                                    <label for="EditMale">Male</label><br>
+                                                    <input type="radio" id="EditFemale" name="Gender" value="Female">
+                                                    <label for="EditFemale">Female</label><br>
+                                                    <input type="radio" id="EditOther" name="Gender" value="Other" checked>
+                                                    <label for="EditOther">Other</label>
+                                                }
+                               </div>
+                              <div class="form-group">
+                                <label for="GamingDevice">Gaming Device</label>
+                                <input type="text" class="form-control" name="GamingDevice" value="@Model.GamingDevice">
+                              </div>
+                              <div class="form-group">
+                                @if(Model.IsEsportPlayer){
+                                <input type="checkbox" id="EditIsEsportPlayer" name="IsEsportPlayer" checked >
+                                <label for="IsEsportPlayer">Is Esport Player</label>
+                                }else{
+                                <input type="checkbox" id="EditIsEsportPlayer" name="IsEsportPlayer" >
+                                <label for="IsEsportPlayer">Is Esport Player</label>
+                                }
+                            </div>
+                              <div class="form-group">
+                                <label for="EditEmail">Email</label>
+                                <input type="email" class="form-control" id="EditEmail" name="Email" value="@Model.Email">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="EditPlatformId">Gaming Platform Id</label>
+                                <input type="text" class="form-control" id="EditPlatformId" name="GamingPlatformId" value="@Model.GamingPlatformId">
+                              </div>
+  
+                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+
+
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                </td>
             </tr>
 
 
@@ -82,9 +265,11 @@
 
         </tr>
 
-        <tr>
+        
         @foreach (var item in tdata)
         {
+
+          <tr>
             <td>@item.GameId</td>
             <td>@item.NameOfGame</td>
             <td>@item.RankId</td>
@@ -92,10 +277,10 @@
             <td>@item.NoOfLevels</td>
             <td>@item.Publisher</td>
             <td>@item.Popularity</td>
-            
+           </tr> 
         }
 
-        </tr>
+        
 
     </table>
 </div>
