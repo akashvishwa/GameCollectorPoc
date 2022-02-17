@@ -1,10 +1,17 @@
 ﻿
+@model GameRankProfile
 
 @{
     var data=ViewBag.Data;
 
     var last=0;
 }
+
+
+
+
+
+
 
   <table class="table">
 
@@ -16,7 +23,7 @@
     
         @if (last != item.GameId)
         {
-                <tr>
+                <tr class="TableChange">
                     <td></td>
                     <td></td>
                     <td></td>
@@ -24,13 +31,19 @@
                     <td></td>
                 </tr>
 
-                <tr class="table-primary">
-                    <th colspan=2>
-                        Game Id : @item.GameId 
+                <tr class="table-primary gamedata">
+                    <th>
+                        Game Id  
+                    </th>
+                    <th>
+                         @item.GameId 
                     </th>
 
-                    <th colspan=3>
-                        Game Name : @item.GameName 
+                    <th>
+                        Game Name 
+                    </th>
+                    <th colspan=2>
+                         @item.GameName 
                     </th>
                 
                 </tr>
@@ -45,7 +58,7 @@
                     
                 </tr>
 
-                <tr >
+                <tr class="ProfRankData" >
 
                     <td>@item.ProfileId</td>
                     <td>@item.GamerName</td>
@@ -53,6 +66,11 @@
                     <td>@item.Rank</td>
                     <td>
                         @Html.ActionLink("View Profile","Index","GamerProfile",new{id=@item.ProfileId},new{ @class="btn btn-primary"})
+                        <button class="btn btn-warning EditRankForm" data-toggle="modal" data-target="#editRankModal" >Edit Rank</button>
+
+
+
+                    
                     </td>
                     
                 </tr>
@@ -67,6 +85,11 @@
                     <td>@item.Rank</td>
                     <td>
                         @Html.ActionLink("View Profile","Index","GamerProfile",new{id=@item.ProfileId},new{ @class="btn btn-primary"})
+
+                        <button class="btn btn-warning EditRankForm" data-toggle="modal" data-target="#editRankModal" >Edit Rank</button>
+
+                                            
+                    
                     </td>
                     
                 </tr>
@@ -80,3 +103,33 @@
 
 }
 </table>
+
+
+
+<!-- Modal -->
+    <div class="modal fade" id="editRankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Rank</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+                                
+            @Html.Partial("EditRankingFrom")
+                                
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/js/RankEdit.js"></script>

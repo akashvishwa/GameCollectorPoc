@@ -20,10 +20,10 @@ namespace MVC_Crud.Controllers
 
             //filtering table data
             var tdata = _context.tbl_Ranking.Join(_context.tbl_Games,
-                rank => rank.Games.Id,
+                rank => rank.Id,
                 game => game.Id,
                 (rank, game) => new {
-                    ProfId = rank.GamerProfile.ProfileId,
+                    ProfId = rank.ProfileId,
                     RankId = rank.RankId,
                     Rank = rank.Rank,
                     GameId = game.Id,

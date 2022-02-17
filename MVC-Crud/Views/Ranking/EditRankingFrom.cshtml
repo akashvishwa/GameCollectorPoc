@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+
+
+<form id="EditRankForm" method="post" asp-action="EditRank" >
+    <div class="form-group">
+    <label for="ProfileId">Profile Id</label>
+    <input type="number" class="form-control" id="EditProfileId" name="ProfileId" value="" readonly>
+    </div>
+    <div class="form-group">
+    <label for="GamerName">Gamer Name</label>
+    <input type="text" class="form-control" id="EditGamerName" name="GamerName" value="" readonly>
+    </div>
+    <div class="form-group">
+    <label for="RankId">Rank Id</label>
+    <input type="number" class="form-control" id="EditRankId"name="RankId" value="" readonly>
+    </div>
+    <div class="form-group">
+    <label for="Rank">Rank</label>
+    <input type="text" class="form-control" id="EditRank" name="Rank" value="" >
+    </div>
+    <div class="form-group">
+    <label for="Id">Game Id</label>
+    <input type="number" class="form-control" id="EditGameId" name="Id" value="" readonly>
+    </div>
+    <div class="form-group">
+    <label for="GameName">Name Of Game</label>
+    <input type="text" class="form-control" id="EditGameName" name="GameName" value="" readonly>
+    </div>
+                              
+  
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

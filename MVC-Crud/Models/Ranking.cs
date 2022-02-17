@@ -19,9 +19,14 @@ namespace MVC_Crud.Models
 
         
         /*creating foreign key*/
-        public virtual Games Games { get; set;}
+        [ForeignKey("Games")]
+        public int Id { get; set; }
+        public Games Games { get; set;}
 
-        public virtual GamerProfile GamerProfile { get; set; }
+
+        [ForeignKey("GamerPrifile")]
+        public int ProfileId { get; set; }
+        public GamerProfile GamerProfile { get; set; }
 
 
 

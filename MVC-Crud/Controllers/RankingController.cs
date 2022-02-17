@@ -14,8 +14,8 @@ namespace MVC_Crud.Controllers
         public IActionResult Index()
         {
             var data = from r in _context.tbl_Ranking
-                       join g in _context.tbl_Games on r.Games.Id equals g.Id
-                       join p in _context.tbl_GamerProfile on r.GamerProfile.ProfileId equals p.ProfileId
+                       join g in _context.tbl_Games on r.Id equals g.Id
+                       join p in _context.tbl_GamerProfile on r.ProfileId equals p.ProfileId
                        orderby g.Id
                        select new { 
                        
@@ -32,6 +32,30 @@ namespace MVC_Crud.Controllers
 
             return View();
         }
+
+
+        public async Task<IActionResult> EditRank(GameRankProfile data) {
+
+            Ranking obj=new Ranking();
+
+            obj.RankId = data.RankId;
+            obj.Rank = data.Rank;
+            obj.Id = data.Id;
+            obj.ProfileId = data.ProfileId;
+
+
+            _context.Update(obj);
+            
+            await _context.SaveChangesAsync();
+
+        
+            return RedirectToAction("Index","Ranking");
+        
+        }
+
+
+
+
 
 
          

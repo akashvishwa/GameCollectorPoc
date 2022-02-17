@@ -91,4 +91,39 @@ $(document).ready(function () {
         $("#EditGameForm").submit();
     });
 });
-   
+
+
+
+
+
+
+
+// jquerry to edit rank in rank page
+
+$(document).ready(function () {
+
+    $(".EditRankForm").click(function (eve) {
+
+        var element = $(eve.target).parent().parent();
+
+        var gameId = $(element).prevUntil(".TableChange").last().children(":nth-child(2)").text().trim();
+        var gameName = $(element).prevUntil(".TableChange").last().children(":nth-child(4)").text().trim();
+
+        var secondEle = $(eve.target).parent().parent();
+
+        var profId = $(secondEle).children(":nth-child(1)").text();
+        var gamerName = $(secondEle).children(":nth-child(2)").text();
+        var rankId = $(secondEle).children(":nth-child(3)").text();
+        var rank = $(secondEle).children(":nth-child(4)").text();
+
+
+        $("#EditProfileId").val(profId);
+        $("#EditGamerName").val(gamerName);
+        $("#EditRankId").val(rankId);
+        $("#EditRank").val(rank);
+        $("#EditGameId").val(gameId);
+        $("#EditGameName").val(gameName);
+
+    });
+
+});
