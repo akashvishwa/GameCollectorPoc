@@ -62,6 +62,17 @@ namespace MVC_Crud.Controllers
             return Index(obj.ProfileId);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DeleteProfile(int id) {
+            var data = _context.tbl_GamerProfile.Find(id);
+
+            if (data != null) 
+                _context.tbl_GamerProfile.Remove(data);
+            await _context.SaveChangesAsync();
+            
+            return RedirectToAction("Index","Ranking");
+        }
+
 
 
 

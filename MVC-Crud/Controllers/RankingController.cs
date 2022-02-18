@@ -54,15 +54,67 @@ namespace MVC_Crud.Controllers
         }
 
 
+        // for sending the data to the form about profiles available and games available
+        [HttpGet]
+        public async Task<IActionResult> FetchGamerData() {
 
+            var data = from gp in _context.tbl_GamerProfile
+                       select new {
+                       ProfileId=gp.ProfileId,
+                       GamerName=gp.GamerName,
+                       
+                       };
 
-
-
-         
-
+            return Json(data);
         
+        }
 
-        
-        
+        [HttpGet]
+        public async Task<IActionResult> FetchGameData()
+        {
+            var data = from g in _context.tbl_Games
+                       select new {
+                           Id = g.Id,
+                           GameName = g.NameOfGame,
+                       
+                       };
+
+
+            return Json(data);
+
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddRank(Ranking data) {
+
+            _context.tbl_Ranking.Add(data);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteRank(int id) {
+
+            var data=_context.tbl_Ranking.Find(id);
+            if (data != null) 
+            _context.tbl_Ranking.Remove(data);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model Ranking
+
+
+<form id="AddRankingForm" method="post" asp-action="AddRank" >
+    @*<div class="form-group">
+    <label for="ProfileId">Profile Id</label>
+    <select  class="selectpicker form-control " data-style="btn-success"  id="AddProfileId" name="ProfileId" >
+       
+    </select>
+    </div>*@
+    <div class="form-group">
+    <label for="GamerName">Gamer Name</label>
+    <select  class="selectpicker form-control " data-style="btn-success" id="AddGamerName" name="ProfileId" >
+    </select>
+    </div>
+    <div class="form-group">
+    <label for="RankId">Rank Id</label>
+    <input type="number" class="form-control" id="AddRankId"name="RankId" value="" disabled>
+    </div>
+    <div class="form-group">
+    <label for="Rank">Rank</label>
+    <input type="text" class="form-control" id="AddRank" name="Rank" value="" >
+    </div>
+    @*<div class="form-group">
+    <label for="Id">Game Id</label>
+    <select  class="selectpicker form-control " data-style="btn-success" id="AddGameId" name="Id" >
+    </select>
+    </div>*@
+    <div class="form-group">
+    <label for="GameName">Name Of Game</label>
+    <select  class="selectpicker form-control " data-style="btn-success" id="AddGameName" name="Id" >
+    </select>
+    </div>
+                              
+  
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

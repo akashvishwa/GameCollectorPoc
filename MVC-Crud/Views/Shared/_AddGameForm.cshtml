@@ -22,7 +22,7 @@
 <form method="post" id="AddGameForm" asp-action="AddGames">
   <div class="form-group">
     <label for="NameOfGame">Name OF Game</label>
-    <input type="text"  name="NameOfGame" class="form-control"  placeholder="Enter Game's Name" pattern="[A-Za-z0-9_]"/>
+    <input type="text"  name="NameOfGame" class="form-control"  placeholder="Enter Game's Name" pattern="^[a-zA-Z0-9_ ]*$"/>
     
   </div>
 
@@ -34,7 +34,7 @@
 
   <div class="form-group">
     <label for="Publisher">Publisher OF Game</label>
-    <input type="text" name="Publisher" class="form-control"  placeholder="Enter Publisher's Name" pattern="[A-Za-z0-9_]"/>
+    <input type="text" name="Publisher" class="form-control"  placeholder="Enter Publisher's Name" pattern="^[a-zA-Z0-9_ ]*$"/>
     
   </div>
 

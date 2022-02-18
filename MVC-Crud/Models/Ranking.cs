@@ -24,7 +24,7 @@ namespace MVC_Crud.Models
         public Games Games { get; set;}
 
 
-        [ForeignKey("GamerPrifile")]
+        [ForeignKey("GamerProfile")]
         public int ProfileId { get; set; }
         public GamerProfile GamerProfile { get; set; }
 
