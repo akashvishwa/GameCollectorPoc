@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Crud.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220214164653_initial")]
-    partial class initial
+    [Migration("20220218183037_AddingFileUpload")]
+    partial class AddingFileUpload
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,10 @@ namespace MVC_Crud.Migrations
 
                     b.Property<bool>("IsEsportPlayer")
                         .HasColumnType("bit");
+
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RealName")
                         .IsRequired()
@@ -99,10 +103,10 @@ namespace MVC_Crud.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RankId"), 1L, 1);
 
-                    b.Property<int>("GamerProfileProfileId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("GamesId")
+                    b.Property<int>("ProfileId")
                         .HasColumnType("int");
 
                     b.Property<string>("Rank")
@@ -111,24 +115,24 @@ namespace MVC_Crud.Migrations
 
                     b.HasKey("RankId");
 
-                    b.HasIndex("GamerProfileProfileId");
+                    b.HasIndex("Id");
 
-                    b.HasIndex("GamesId");
+                    b.HasIndex("ProfileId");
 
                     b.ToTable("tbl_Ranking");
                 });
 
             modelBuilder.Entity("MVC_Crud.Models.Ranking", b =>
                 {
-                    b.HasOne("MVC_Crud.Models.GamerProfile", "GamerProfile")
+                    b.HasOne("MVC_Crud.Models.Games", "Games")
                         .WithMany()
-                        .HasForeignKey("GamerProfileProfileId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MVC_Crud.Models.Games", "Games")
+                    b.HasOne("MVC_Crud.Models.GamerProfile", "GamerProfile")
                         .WithMany()
-                        .HasForeignKey("GamesId")
+                        .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

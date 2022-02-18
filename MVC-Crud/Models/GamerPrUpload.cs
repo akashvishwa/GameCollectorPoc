@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_Crud.Models
 {
-    public class GamerProfile
+
+    //this is a view model
+    public class GamerPrUpload
     {
+
         [Key]
         public int ProfileId { get; set; }
 
-        
         public string RealName { get; set; }
 
 
@@ -22,20 +23,17 @@ namespace MVC_Crud.Models
         public string GamingDevice { get; set; }
 
         [Required]
-        public bool IsEsportPlayer { get; set; } 
+        public bool IsEsportPlayer { get; set; }
 
         [Required]
-        public string Email { get; set; } 
+        public string Email { get; set; }
 
 
-        
+
         public string GamingPlatformId { get; set; }
 
 
-        public string PhotoPath { get; set; }
-
-
-
+        public IFormFile Photo { get; set; }
 
     }
 }

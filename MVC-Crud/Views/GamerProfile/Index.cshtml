@@ -1,9 +1,10 @@
-﻿@model GamerProfile
+﻿@model GamerPrUpload
 
 
     @{
-        var tdata = ViewBag.tdata;
-    }
+    var tdata = ViewBag.tdata;
+    var path = ViewBag.PicturePath;
+}
 
 
 
@@ -23,58 +24,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            
-                            <form id="EditProfile" method="post" asp-action="AddProfile">
-                              <div class="form-group" >
-                                <label for="ProfileId">Profile Id</label>
-                                <input type="number" class="form-control" name="ProfileId" readonly>
-                              </div>
-                              <div class="form-group">
-                                <label for="RealName">Real Name</label>
-                                <input type="text" class="form-control" name="RealName" >
-                              </div>
-                              <div class="form-group">
-                                <label for="GamerName">Gamer Name</label>
-                                <input type="text" class="form-control" name="GamerName" >
-                              </div>
-                              <div class="form-group">
-                                                
-                                    <input type="radio" id="AddMale" name="Gender" value="Male" >
-                                    <label for="AddMale">Male</label><br>
-                                    <input type="radio" id="AddFemale" name="Gender" value="Female">
-                                    <label for="AddFemale">Female</label><br>
-                                    <input type="radio" id="AddOther" name="Gender" value="Other">
-                                    <label for="Other">Other</label>
-                                                
-                                                
-                               </div>
-                              <div class="form-group">
-                                <label for="GamingDevice">Gaming Device</label>
-                                <input type="text" class="form-control" name="GamingDevice" placeholder="Choose From : Pc , Mobile , Console" >
-                              </div>
-                              <div class="form-group">
-                                
-                                
-                                <input name="IsEsportPlayer" type="checkbox" value="true" />
-                                <input name="IsEsportPlayer" type="hidden" value="false" />
-                                <label for="IsEsportPlayer">Is Esport Player</label>
-                                
-                            </div>
-                              <div class="form-group">
-                                <label for="AddEmail">Email</label>
-                                <input type="email" class="form-control" id="AddEmail" name="Email">
-                              </div>
-
-                              <div class="form-group">
-                                <label for="PlatformId">Gaming Platform Id</label>
-                                <input type="text" class="form-control" name="GamingPlatformId">
-                              </div>
-  
-                              <button type="submit" class="btn btn-primary">Add Profile</button>
-                            </form>
-
-
-
+                            @Html.Partial("AddGamerProfileForm")
 
                           </div>
                           <div class="modal-footer">
@@ -92,7 +42,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <img src="~/dragonAvtar.png" class="img-fluid" alt="Responsive image"/>
+      <img src="~/Images/@path" class="img-fluid" alt="Responsive image" style="width:250px;height:250px"/>
         <div class="alert alert-primary " style="text-align:center" role="alert">
           Avatar
         </div>
@@ -152,7 +102,7 @@
                           </div>
                           <div class="modal-body">
                             
-                            <form id="EditProfile" method="post" asp-action="EditProfile">
+                            <form enctype="multipart/form-data" id="EditProfile" method="post" asp-action="EditProfile">
                               <div class="form-group">
                                 <label for="EditProfileId">Profile Id</label>
                                 <input type="number" class="form-control" name="ProfileId" value="@Model.ProfileId">
@@ -216,6 +166,11 @@
                               <div class="form-group">
                                 <label for="EditPlatformId">Gaming Platform Id</label>
                                 <input type="text" class="form-control" id="EditPlatformId" name="GamingPlatformId" value="@Model.GamingPlatformId">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="Photo">Upload Photo</label>
+                                <input asp-for="Photo" class="form-control" name="Photo">
                               </div>
   
                               <button type="submit" class="btn btn-primary">Save Changes</button>
