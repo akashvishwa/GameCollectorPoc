@@ -8,7 +8,6 @@
 
 
 
-
 @*add button Modal*@
 
 <button class="btn btn-success AddProfBtn" data-toggle="modal" data-target="#AddProfModal" >Add Profile</button>
@@ -37,17 +36,18 @@
 
 
 
-
+<br />
+<br />
 
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <img src="~/Images/@path" class="img-fluid" alt="Responsive image" style="width:250px;height:250px"/>
+    <div class="col">
+      <img src="~/Images/@path" class="img-fluid" alt="Responsive image" style="width:60%;height:250px;display:block;margin-left:auto;margin-right:auto"/>
         <div class="alert alert-primary " style="text-align:center" role="alert">
           Avatar
         </div>
     </div>
-    <div class="col-8">
+    <div class="col">
      
         <table class="table table-striped">
 
@@ -168,10 +168,16 @@
                                 <input type="text" class="form-control" id="EditPlatformId" name="GamingPlatformId" value="@Model.GamingPlatformId">
                               </div>
 
+                              <div class="form-group" hidden>
+                                
+                                <input type="text" class="form-control"  name="PhotoPath" value="@Model.PhotoPath">
+                              </div>
+
                               <div class="form-group">
                                 <label for="Photo">Upload Photo</label>
                                 <input asp-for="Photo" class="form-control" name="Photo">
                               </div>
+
   
                               <button type="submit" class="btn btn-primary">Save Changes</button>
                             </form>
@@ -213,11 +219,10 @@
         <tr class="table-primary">
             <th>GameId</th>
             <th>Game Name</th>
-            <th>Rank Id</th>
-            <th>Rank Of Player</th>
-            <th>No Of Levels in Game</th>
-            <th>Publisher of Game</th>
-            <th>Popularity of Game </th>
+            <th>Player Rank</th>
+            <th>Levels</th>
+            <th>Game Publisher</th>
+            <th>Game Popularity </th>
 
         </tr>
 
@@ -228,7 +233,6 @@
           <tr>
             <td>@item.GameId</td>
             <td>@item.NameOfGame</td>
-            <td>@item.RankId</td>
             <td>@item.Rank</td>
             <td>@item.NoOfLevels</td>
             <td>@item.Publisher</td>

@@ -35,5 +35,7 @@ namespace MVC_Crud.Models
 
         public IFormFile Photo { get; set; }
 
+        public string PhotoPath { get; set; }
+
     }
 }

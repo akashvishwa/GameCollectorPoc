@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Crud.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220218183037_AddingFileUpload")]
-    partial class AddingFileUpload
+    [Migration("20220219035003_AddedFileUploadTable")]
+    partial class AddedFileUploadTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -4,7 +4,7 @@
 
 namespace MVC_Crud.Migrations
 {
-    public partial class AddingFileUpload : Migration
+    public partial class AddedFileUploadTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -32,6 +32,7 @@ namespace MVC_Crud.Controllers
             newProf.IsEsportPlayer=data.IsEsportPlayer;
             newProf.Email=data.Email;
             newProf.GamingPlatformId=data.GamingPlatformId;
+            newProf.PhotoPath=data.PhotoPath;
 
 
 
@@ -70,7 +71,10 @@ namespace MVC_Crud.Controllers
                 string FilePath = Path.Combine(uploadsFolder, UniqueFileName);
                 model.Photo.CopyTo(new FileStream(FilePath, FileMode.Create));
             }
-
+            else
+            {
+                UniqueFileName = model.PhotoPath;
+            }
 
             GamerProfile gp = new GamerProfile
             {
