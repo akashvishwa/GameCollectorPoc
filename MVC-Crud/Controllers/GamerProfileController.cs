@@ -104,13 +104,18 @@ namespace MVC_Crud.Controllers
             
 
                 string UniqueFileName = null;
-                if (model.Photo != null)
-                {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Images");
-                    UniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
-                    string FilePath = Path.Combine(uploadsFolder, UniqueFileName);
-                    model.Photo.CopyTo(new FileStream(FilePath, FileMode.Create));
-                }
+            if (model.Photo != null)
+            {
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Images");
+                UniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                string FilePath = Path.Combine(uploadsFolder, UniqueFileName);
+                model.Photo.CopyTo(new FileStream(FilePath, FileMode.Create));
+            }
+            else
+            {
+                UniqueFileName = "default.png";
+            
+            }
 
 
                 GamerProfile gp = new GamerProfile
