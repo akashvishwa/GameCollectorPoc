@@ -124,7 +124,7 @@
                 <td>@Html.DisplayFor(newItem=>item.Publisher)</td>
                 <td>@Html.DisplayFor(newItem=>item.Popularity)</td>
                 <td>
-                    <a class="btn btn-success editBtn" data-toggle="modal" data-target="#EditModal" >Edit</a>
+                    <a class="btn btn-success editBtn text-white" data-toggle="modal" data-target="#EditModal" >Edit</a>
                     <form method="post" style="display:inline" asp-action="DeleteData">                        
                         <input type="number" class="del-Id" name="Id" style="display:none"/>                                                 
                         <button class="btn btn-danger delBtn" style="display:inline">Delete</button>
