@@ -15,37 +15,62 @@ namespace MVC_Crud.Controllers
         {
             List<Games> data = _context.tbl_Games.ToList();
 
+            
+
+            TempData.Keep();
+
             return View(data);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddGames(Games game)
         {
-            await _context.tbl_Games.AddAsync(game);
-            await _context.SaveChangesAsync();
+            try
+            {
+                
+                await _context.tbl_Games.AddAsync(game);
+                await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+                TempData["ToastMessage"] = "Game Added Successfully";
+                TempData["OperationStatus"] = "Success";
+                return RedirectToAction("Index");
+
+            }catch (Exception ex)
+            {
+                TempData["ToastMessage"] = "Exception Occured";
+                TempData["OperationStatus"] = "Failure";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> editgames(Games game)
         {
 
-            Console.WriteLine(game.Id);
-            var data = _context.tbl_Games.Find(game.Id);
+            /*Console.WriteLine(game.Id);*/
+            try
+            {
+                var data = _context.tbl_Games.Find(game.Id);
 
-            if (data == null)
-                return BadRequest("Please Give correct Id");
+                if (data == null)
+                    return BadRequest("Please Give correct Id");
 
-            data.NameOfGame = game.NameOfGame;
-            data.NoOfLevel = game.NoOfLevel;
-            data.Publisher = game.Publisher;
-            data.Popularity = game.Popularity;
+                data.NameOfGame = game.NameOfGame;
+                data.NoOfLevel = game.NoOfLevel;
+                data.Publisher = game.Publisher;
+                data.Popularity = game.Popularity;
 
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+                TempData["ToastMessage"] = "Game Edited Successfully";
+                TempData["OperationStatus"] = "Success";
+            }
+            catch (Exception ex)
+            {
+                TempData["ToastMessage"] = "Some Exception Occured";
+                TempData["OperationStatus"] = "Failure";
 
-             
+            }
 
             return RedirectToAction("Index");
         }
@@ -53,12 +78,21 @@ namespace MVC_Crud.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteData(int Id) {
 
-            
+            try
+            {
+                var data = await _context.tbl_Games.FindAsync(Id);
 
-            var data =await _context.tbl_Games.FindAsync(Id);
+                _context.tbl_Games.Remove(data);
+                await _context.SaveChangesAsync();
 
-            _context.tbl_Games.Remove(data);
-            await _context.SaveChangesAsync() ;
+                TempData["ToastMessage"] = "Game Deleted Successfully";
+                TempData["OperationStatus"] = "Success";
+            }
+            catch (Exception ex) {
+                TempData["ToastMessage"] = "Some Exception Occured";
+                TempData["OperationStatus"] = "Failure";
+
+            }
 
             return RedirectToAction("Index");
         }

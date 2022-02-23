@@ -6,6 +6,8 @@
 
 
 
+
+
 @*<style>
     #overlay-edit{
     display:none;
@@ -171,3 +173,29 @@
              </form>
 
 </div>*@
+
+
+
+
+
+
+@*jquerry for toaster*@
+
+@if(TempData.Count>0){
+
+    var tm = TempData["ToastMessage"];
+    var os = TempData["OperationStatus"];
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+   
+<script>
+    $(document).ready(function(){
+    
+        if('@os'=='Success')
+            toastr.success('@tm', '@os', {timeOut: 5000})
+        else if('@os'=='Failure')    
+            toastr.error('@tm','@os',{timeout: 5000})
+    });
+</script>
+}
