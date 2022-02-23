@@ -37,7 +37,7 @@ namespace MVC_Crud.Controllers
 
             }catch (Exception ex)
             {
-                TempData["ToastMessage"] = "Exception Occured";
+                TempData["ToastMessage"] = "Exception Occured in Adding";
                 TempData["OperationStatus"] = "Failure";
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace MVC_Crud.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ToastMessage"] = "Some Exception Occured";
+                TempData["ToastMessage"] = "Some Exception Occured in Editing";
                 TempData["OperationStatus"] = "Failure";
 
             }
@@ -89,7 +89,7 @@ namespace MVC_Crud.Controllers
                 TempData["OperationStatus"] = "Success";
             }
             catch (Exception ex) {
-                TempData["ToastMessage"] = "Some Exception Occured";
+                TempData["ToastMessage"] = "Some Exception Occured in Deleting";
                 TempData["OperationStatus"] = "Failure";
 
             }
